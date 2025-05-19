@@ -59,12 +59,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php
 
+include("connections.php");
+
+
 if ($name && $address && $email && $contact) {
 
-    echo $name . "<br>";
-    echo $address . "<br>";
-    echo $email . "<br>";
-    echo $contact . "<br>";
+    $query = mysqli_query($connections, "INSERT INTO mytbl(name,address,email,contact) VALUES('$name','$address','$email','$contact') ");
 }
 
 ?>
