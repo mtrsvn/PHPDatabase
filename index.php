@@ -65,6 +65,43 @@ include("connections.php");
 if ($name && $address && $email && $contact) {
 
     $query = mysqli_query($connections, "INSERT INTO mytbl(name,address,email,contact) VALUES('$name','$address','$email','$contact') ");
+
+    echo "<script languages='javascript'>alert('New Record has been inserted!')</script>";
+    echo "<script>window.location.href='index.php';</script>";
 }
+$view_query = mysqli_query($connections, "SELECT * FROM mytbl");
+
+
+echo "<table border='1' width='50%'>";
+echo "<tr>
+<td>Name</td>
+<td>Address</td>
+<td>Email</td>
+<td>Contact</td></tr>";
+while ($row = mysqli_fetch_assoc($view_query)) {
+    $user_id = $row["id"];
+    $db_name = $row["name"];
+    $db_address = $row["address"];
+    $db_email = $row["email"];
+    $db_contact = $row["contact"];
+
+    echo "<tr>
+    <td>$db_name</td>
+    <td>$db_address</td>
+    <td>$db_email</td>
+    <td>$db_contact</td>
+
+    
+    <td>
+    
+    <a href='Edit.php?id=$user_id'>Update</a>
+    &nbsp;
+    <a href='ConfirmDelete.php?id=$user_id'>Delete</a>
+
+    
+    </td>
+    </tr>";
+}
+echo "</table>";
 
 ?>
