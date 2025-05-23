@@ -10,3 +10,4 @@ echo "<script languages='javascript'>alert('Record has been Deleted!')</script>"
 echo "<script>window.location.href='index.php';</script>";
 
 ?>
+
